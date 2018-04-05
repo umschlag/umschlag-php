@@ -1,0 +1,30 @@
+{
+    "name": "umschlag/umschlag",
+    "type": "library",
+    "description": "docker distribution management system",
+    "keywords": ["docker", "registry"],
+    "homepage": "https://umschlag.webhippie.de",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Thomas Boerger",
+            "email": "thomas@webhippie.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Umschlag\\": "lib/Umschlag"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Umschlag\\Tests\\": "tests/Umschlag/Tests"
+        }
+    }
+}
