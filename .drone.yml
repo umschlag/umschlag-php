@@ -6,13 +6,13 @@ branches:
   - master
 
 pipeline:
-  cache-restore:
-    image: plugins/s3-cache:1
-    pull: true
-    secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
-    restore: true
-    when:
-      local: false
+  # cache-restore:
+  #   image: plugins/s3-cache:1
+  #   pull: true
+  #   secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
+  #   restore: true
+  #   when:
+  #     local: false
 
   sdk-prepare:
     image: webhippie/php-cli:latest
@@ -20,28 +20,28 @@ pipeline:
     commands:
       - php -v
 
-  cache-rebuild:
-    image: plugins/s3-cache:1
-    pull: true
-    secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
-    rebuild: true
-    mount:
-      - vendor/
-    when:
-      local: false
-      event: [ push ]
-      branch: master
+  # cache-rebuild:
+  #   image: plugins/s3-cache:1
+  #   pull: true
+  #   secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
+  #   rebuild: true
+  #   mount:
+  #     - vendor/
+  #   when:
+  #     local: false
+  #     event: [ push ]
+  #     branch: master
 
-  cache-flush:
-    image: plugins/s3-cache:1
-    pull: true
-    secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
-    flush: true
-    flush_age: 14
-    when:
-      local: false
-      event: [ push ]
-      branch: master
+  # cache-flush:
+  #   image: plugins/s3-cache:1
+  #   pull: true
+  #   secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
+  #   flush: true
+  #   flush_age: 14
+  #   when:
+  #     local: false
+  #     event: [ push ]
+  #     branch: master
 
   # upload-release:
   #   image: plugins/github-release:1
