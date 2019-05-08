@@ -1,60 +1,66 @@
-workspace:
-  base: /srv/app
-  path: src/github.com/umschlag/umschlag-php
+---
+kind: pipeline
+name: testing
 
-branches:
-  - master
+platform:
+  os: linux
+  arch: amd64
 
-pipeline:
-  # cache-restore:
-  #   image: plugins/s3-cache:1
-  #   pull: true
-  #   secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
-  #   restore: true
-  #   when:
-  #     local: false
+steps:
+- name: prepare
+  image: webhippie/php-cli:latest
+  pull: always
+  commands:
+  - composer install --prefer-dist
 
-  sdk-prepare:
-    image: webhippie/php-cli:latest
-    pull: true
-    commands:
-      - php -v
+- name: stan
+  image: webhippie/php-cli:latest
+  pull: always
+  commands:
+  - ./vendor-bin/stan/vendor/bin/phpstan analyse --level=5 lib/
+  depends_on:
+  - prepare
 
-  # cache-rebuild:
-  #   image: plugins/s3-cache:1
-  #   pull: true
-  #   secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
-  #   rebuild: true
-  #   mount:
-  #     - vendor/
-  #   when:
-  #     local: false
-  #     event: [ push ]
-  #     branch: master
+- name: phan
+  image: webhippie/php-cli:latest
+  pull: always
+  commands:
+  - ./vendor-bin/phan/vendor/bin/phan --allow-polyfill-parser lib/**/*.php
+  depends_on:
+  - prepare
 
-  # cache-flush:
-  #   image: plugins/s3-cache:1
-  #   pull: true
-  #   secrets: [ cache_s3_endpoint, cache_s3_access_key, cache_s3_secret_key ]
-  #   flush: true
-  #   flush_age: 14
-  #   when:
-  #     local: false
-  #     event: [ push ]
-  #     branch: master
+- name: test
+  image: webhippie/php-cli:latest
+  pull: always
+  commands:
+  - ./vendor-bin/phpunit/vendor/bin/phpunit tests/
+  depends_on:
+  - prepare
 
-  # upload-release:
-  #   image: plugins/github-release:1
-  #   pull: true
-  #   when:
-  #     event: [ tag ]
-  #     branch: master
+- name: notify
+  image: plugins/matrix:1
+  pull: always
+  settings:
+    username:
+      from_secret: matrix_username
+    password:
+      from_secret: matrix_password
+    roomid:
+      from_secret: matrix_roomid
+  when:
+    event:
+    - push
+    - tag
+    status:
+    - failure
+  depends_on:
+  - prepare
+  - stan
+  - phan
+  - test
 
-  notify-matrix:
-    image: plugins/matrix:1
-    pull: true
-    secrets: [ matrix_roomid, matrix_username, matrix_password ]
-    when:
-      local: false
-      event: [ push, tag ]
-      status: [ changed, failure ]
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
