@@ -13,29 +13,41 @@ steps:
   commands:
   - composer install --prefer-dist
 
-- name: stan
-  image: webhippie/php-cli:latest
-  pull: always
-  commands:
-  - ./vendor-bin/stan/vendor/bin/phpstan analyse --level=5 lib/
-  depends_on:
-  - prepare
+# - name: style
+#   image: webhippie/php-cli:latest
+#   pull: always
+#   commands:
+#   - ./vendor/bin/phpcs -p lib/ test/
 
-- name: phan
-  image: webhippie/php-cli:latest
-  pull: always
-  commands:
-  - ./vendor-bin/phan/vendor/bin/phan --allow-polyfill-parser lib/**/*.php
-  depends_on:
-  - prepare
+# - name: stan
+#   image: webhippie/php-cli:latest
+#   pull: always
+#   commands:
+#   - ./vendor/bin/phpstan analyse --level=5 lib/
+
+# - name: phan
+#   image: webhippie/php-cli:latest
+#   pull: always
+#   commands:
+#   - ./vendor/bin/phan lib/**/*.php
 
 - name: test
   image: webhippie/php-cli:latest
   pull: always
   commands:
-  - ./vendor-bin/phpunit/vendor/bin/phpunit tests/
-  depends_on:
-  - prepare
+  - phpdbg -rr ./vendor/bin/phpunit
+
+- name: codacy
+  image: webhippie/php-cli:latest
+  pull: always
+  environment:
+    CODACY_PROJECT_TOKEN:
+      from_secret: codacy_token
+  commands:
+  - ./vendor/bin/codacycoverage clover coverage.xml
+  when:
+    instance:
+    - cloud.drone.io
 
 - name: notify
   image: plugins/matrix:1
@@ -53,11 +65,6 @@ steps:
     - tag
     status:
     - failure
-  depends_on:
-  - prepare
-  - stan
-  - phan
-  - test
 
 trigger:
   ref:

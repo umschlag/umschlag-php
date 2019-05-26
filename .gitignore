@@ -1,2 +1,5 @@
 vendor/
-vendor-bin/**/vendor/
+
+coverage.xml
+composer.lock
+.php_cs.cache

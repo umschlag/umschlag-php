@@ -1,0 +1,4 @@
+variableNamingConvention: camelCase
+invokerPackage: Umschlag
+packageName: umschlag
+artifactVersion: 1.0.0-alpha1

@@ -1,8 +1,10 @@
 {
-    "name": "umschlag/umschlag",
+    "name": "{{gitUserId}}/{{packageName}}",
     "type": "library",
-    "version": "1.0.0-alpha1",
-    "description": "API definition for Umschlag",
+    {{#artifactVersion}}
+    "version": "{{artifactVersion}}",
+    {{/artifactVersion}}
+    "description": "{{{appDescription}}}",
     "keywords": [
         "openapitools",
         "openapi-generator",
@@ -14,7 +16,7 @@
         "docker",
         "registry"
     ],
-    "homepage": "https://github.com/umschlag/umschlag-php",
+    "homepage": "https://github.com/{{gitUserId}}/{{gitRepoId}}",
     "license": "Apache-2.0",
     "authors": [
         {
@@ -39,12 +41,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Umschlag\\" : "lib/"
+            "{{escapedInvokerPackage}}\\" : "{{srcBasePath}}/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Umschlag\\" : "test/"
+            "{{escapedInvokerPackage}}\\" : "{{testBasePath}}/"
         }
     }
 }
