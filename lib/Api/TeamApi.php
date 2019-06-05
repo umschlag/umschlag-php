@@ -127,7 +127,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object|object|object|object|object
+     * @return \Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError
      */
     public function appendTeamToUser($teamId, $teamUser)
     {
@@ -145,7 +145,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
     public function appendTeamToUserWithHttpInfo($teamId, $teamUser)
     {
@@ -182,68 +182,68 @@ class TeamApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 412:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Umschlag\Model\GeneralError';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -262,7 +262,7 @@ class TeamApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -270,7 +270,7 @@ class TeamApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -278,7 +278,7 @@ class TeamApi
                 case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -286,7 +286,7 @@ class TeamApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -294,7 +294,7 @@ class TeamApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -338,7 +338,7 @@ class TeamApi
      */
     public function appendTeamToUserAsyncWithHttpInfo($teamId, $teamUser)
     {
-        $returnType = 'object';
+        $returnType = '\Umschlag\Model\GeneralError';
         $request = $this->appendTeamToUserRequest($teamId, $teamUser);
 
         return $this->client
@@ -492,7 +492,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Umschlag\Model\Team|object|object|object|object
+     * @return \Umschlag\Model\Team|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\ValidationError|\Umschlag\Model\GeneralError
      */
     public function createTeam($team)
     {
@@ -509,7 +509,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Umschlag\Model\Team|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Umschlag\Model\Team|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\ValidationError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTeamWithHttpInfo($team)
     {
@@ -558,50 +558,50 @@ class TeamApi
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 412:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\ValidationError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\ValidationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -634,7 +634,7 @@ class TeamApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -642,7 +642,7 @@ class TeamApi
                 case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -650,7 +650,7 @@ class TeamApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\ValidationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -658,7 +658,7 @@ class TeamApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -839,7 +839,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object|object|object|object
+     * @return \Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError
      */
     public function deleteTeam($teamId)
     {
@@ -856,7 +856,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteTeamWithHttpInfo($teamId)
     {
@@ -893,56 +893,56 @@ class TeamApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Umschlag\Model\GeneralError';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -961,7 +961,7 @@ class TeamApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -969,7 +969,7 @@ class TeamApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -977,7 +977,7 @@ class TeamApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -985,7 +985,7 @@ class TeamApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1027,7 +1027,7 @@ class TeamApi
      */
     public function deleteTeamAsyncWithHttpInfo($teamId)
     {
-        $returnType = 'object';
+        $returnType = '\Umschlag\Model\GeneralError';
         $request = $this->deleteTeamRequest($teamId);
 
         return $this->client
@@ -1172,7 +1172,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object|object|object|object|object
+     * @return \Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError
      */
     public function delteTeamFromUser($teamId, $teamUser)
     {
@@ -1190,7 +1190,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
     public function delteTeamFromUserWithHttpInfo($teamId, $teamUser)
     {
@@ -1227,68 +1227,68 @@ class TeamApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 412:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Umschlag\Model\GeneralError';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1307,7 +1307,7 @@ class TeamApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1315,7 +1315,7 @@ class TeamApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1323,7 +1323,7 @@ class TeamApi
                 case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1331,7 +1331,7 @@ class TeamApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1339,7 +1339,7 @@ class TeamApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1383,7 +1383,7 @@ class TeamApi
      */
     public function delteTeamFromUserAsyncWithHttpInfo($teamId, $teamUser)
     {
-        $returnType = 'object';
+        $returnType = '\Umschlag\Model\GeneralError';
         $request = $this->delteTeamFromUserRequest($teamId, $teamUser);
 
         return $this->client
@@ -1537,7 +1537,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Umschlag\Model\TeamUser[]|object|object
+     * @return \Umschlag\Model\TeamUser[]|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError
      */
     public function listTeamUsers($teamId)
     {
@@ -1554,7 +1554,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Umschlag\Model\TeamUser[]|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Umschlag\Model\TeamUser[]|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTeamUsersWithHttpInfo($teamId)
     {
@@ -1603,26 +1603,26 @@ class TeamApi
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1655,7 +1655,7 @@ class TeamApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1663,7 +1663,7 @@ class TeamApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1848,7 +1848,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Umschlag\Model\Team[]|object|object
+     * @return \Umschlag\Model\Team[]|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError
      */
     public function listTeams()
     {
@@ -1864,7 +1864,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Umschlag\Model\Team[]|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Umschlag\Model\Team[]|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTeamsWithHttpInfo()
     {
@@ -1913,26 +1913,26 @@ class TeamApi
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1965,7 +1965,7 @@ class TeamApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1973,7 +1973,7 @@ class TeamApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2143,7 +2143,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object|object|object|object|object
+     * @return \Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError
      */
     public function permitTeamUser($teamId, $teamUser)
     {
@@ -2161,7 +2161,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
     public function permitTeamUserWithHttpInfo($teamId, $teamUser)
     {
@@ -2198,68 +2198,68 @@ class TeamApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 412:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\Umschlag\Model\GeneralError';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -2278,7 +2278,7 @@ class TeamApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2286,7 +2286,7 @@ class TeamApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2294,7 +2294,7 @@ class TeamApi
                 case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2302,7 +2302,7 @@ class TeamApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2310,7 +2310,7 @@ class TeamApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2354,7 +2354,7 @@ class TeamApi
      */
     public function permitTeamUserAsyncWithHttpInfo($teamId, $teamUser)
     {
-        $returnType = 'object';
+        $returnType = '\Umschlag\Model\GeneralError';
         $request = $this->permitTeamUserRequest($teamId, $teamUser);
 
         return $this->client
@@ -2508,7 +2508,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Umschlag\Model\Team|object|object
+     * @return \Umschlag\Model\Team|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError
      */
     public function showTeam($teamId)
     {
@@ -2525,7 +2525,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Umschlag\Model\Team|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Umschlag\Model\Team|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
     public function showTeamWithHttpInfo($teamId)
     {
@@ -2574,26 +2574,26 @@ class TeamApi
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2626,7 +2626,7 @@ class TeamApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2634,7 +2634,7 @@ class TeamApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2821,7 +2821,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Umschlag\Model\Team|object|object|object|object
+     * @return \Umschlag\Model\Team|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\ValidationError|\Umschlag\Model\GeneralError
      */
     public function updateTeam($teamId, $team)
     {
@@ -2839,7 +2839,7 @@ class TeamApi
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Umschlag\Model\Team|object|object|object|object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Umschlag\Model\Team|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\ValidationError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTeamWithHttpInfo($teamId, $team)
     {
@@ -2888,50 +2888,50 @@ class TeamApi
                         $response->getHeaders()
                     ];
                 case 403:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 412:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\ValidationError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\ValidationError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 default:
-                    if ('object' === '\SplFileObject') {
+                    if ('\Umschlag\Model\GeneralError' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = $responseBody->getContents();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\Umschlag\Model\GeneralError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2964,7 +2964,7 @@ class TeamApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2972,7 +2972,7 @@ class TeamApi
                 case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2980,7 +2980,7 @@ class TeamApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\ValidationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2988,7 +2988,7 @@ class TeamApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\Umschlag\Model\GeneralError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

@@ -1,6 +1,6 @@
 # Umschlag\AuthApi
 
-All URIs are relative to *http://http:/api/v1*
+All URIs are relative to *http://try.umschlag.tech/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## loginUser
 
-> \Umschlag\Model\AuthToken loginUser($auth)
+> \Umschlag\Model\AuthToken loginUser($params)
 
 Authenticate an user by credentials
 
@@ -28,10 +28,10 @@ $apiInstance = new Umschlag\Api\AuthApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$auth = new \Umschlag\Model\InlineObject(); // \Umschlag\Model\InlineObject | 
+$params = new \Umschlag\Model\AuthLogin(); // \Umschlag\Model\AuthLogin | The credentials to authenticate
 
 try {
-    $result = $apiInstance->loginUser($auth);
+    $result = $apiInstance->loginUser($params);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthApi->loginUser: ', $e->getMessage(), PHP_EOL;
@@ -44,7 +44,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **auth** | [**\Umschlag\Model\InlineObject**](../Model/InlineObject.md)|  |
+ **params** | [**\Umschlag\Model\AuthLogin**](../Model/AuthLogin.md)| The credentials to authenticate |
 
 ### Return type
 

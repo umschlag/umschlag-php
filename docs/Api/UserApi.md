@@ -1,6 +1,6 @@
 # Umschlag\UserApi
 
-All URIs are relative to *http://http:/api/v1*
+All URIs are relative to *http://try.umschlag.tech/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## appendUserToTeam
 
-> object appendUserToTeam($userId, $userTeam)
+> \Umschlag\Model\GeneralError appendUserToTeam($userId, $userTeam)
 
 Assign a team to user
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Umschlag\Model\GeneralError**](../Model/GeneralError.md)
 
 ### Authorization
 
@@ -128,7 +128,7 @@ No authorization required
 
 ## deleteUser
 
-> object deleteUser($userId)
+> \Umschlag\Model\GeneralError deleteUser($userId)
 
 Delete a specific user
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Umschlag\Model\GeneralError**](../Model/GeneralError.md)
 
 ### Authorization
 
@@ -182,7 +182,7 @@ No authorization required
 
 ## deleteUserFromTeam
 
-> object deleteUserFromTeam($userId, $userTeam)
+> \Umschlag\Model\GeneralError deleteUserFromTeam($userId, $userTeam)
 
 Remove a team from user
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Umschlag\Model\GeneralError**](../Model/GeneralError.md)
 
 ### Authorization
 
@@ -342,7 +342,7 @@ No authorization required
 
 ## permitUserTeam
 
-> object permitUserTeam($userId, $userTeam)
+> \Umschlag\Model\GeneralError permitUserTeam($userId, $userTeam)
 
 Update team perms for user
 
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\Umschlag\Model\GeneralError**](../Model/GeneralError.md)
 
 ### Authorization
 

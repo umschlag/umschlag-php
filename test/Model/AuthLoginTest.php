@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObjectTest
+ * AuthLoginTest
  *
  * PHP version 5
  *
@@ -33,16 +33,16 @@ namespace Umschlag;
 use PHPUnit\Framework\TestCase;
 
 /**
- * InlineObjectTest Class Doc Comment
+ * AuthLoginTest Class Doc Comment
  *
  * @category    Class
- * @description InlineObject
+ * @description AuthLogin
  * @package     Umschlag
  * @author      Thomas Boerger <thomas@webhippie.de>
  * @license     http://www.apache.org/licenses/LICENSE-2.0.html Apache-2.0
  * @link        https://github.com/umschlag/umschlag-php
  */
-class InlineObjectTest extends TestCase
+class AuthLoginTest extends TestCase
 {
 
     /**
@@ -74,9 +74,9 @@ class InlineObjectTest extends TestCase
     }
 
     /**
-     * Test "InlineObject"
+     * Test "AuthLogin"
      */
-    public function testInlineObject()
+    public function testAuthLogin()
     {
     }
 
