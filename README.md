@@ -1,7 +1,6 @@
 # Umschlag: SDK for PHP
 
-[![Build Status](http://cloud.drone.io/api/badges/umschlag/umschlag-php/status.svg)](http://cloud.drone.io/umschlag/umschlag-php)
-[![Stories in Ready](https://badge.waffle.io/umschlag/umschlag-api.svg?label=ready&title=Ready)](http://waffle.io/umschlag/umschlag-api)
+[![Build Status](https://cloud.drone.io/api/badges/umschlag/umschlag-php/status.svg)](https://cloud.drone.io/umschlag/umschlag-php)
 [![Join the Matrix chat at https://matrix.to/#/#umschlag:matrix.org](https://img.shields.io/badge/matrix-%23umschlag%3Amatrix.org-7bc9a4.svg)](https://matrix.to/#/#umschlag:matrix.org)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cab61d68be3e4314b3bd0c52414af910)](https://www.codacy.com/app/umschlag/umschlag-php?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=umschlag/umschlag-php&amp;utm_campaign=Badge_Grade)
 [![PHP version](https://badge.fury.io/ph/umschlag%2Fumschlag.svg)](https://badge.fury.io/ph/umschlag%2Fumschlag)
