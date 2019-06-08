@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**appendTeamToUser**](TeamApi.md#appendTeamToUser) | **POST** /teams/{team_id}/users | Assign a user to team
 [**createTeam**](TeamApi.md#createTeam) | **POST** /teams | Create a new team
 [**deleteTeam**](TeamApi.md#deleteTeam) | **DELETE** /teams/{team_id} | Delete a specific team
-[**delteTeamFromUser**](TeamApi.md#delteTeamFromUser) | **DELETE** /teams/{team_id}/users | Remove a user from team
+[**deleteTeamFromUser**](TeamApi.md#deleteTeamFromUser) | **DELETE** /teams/{team_id}/users | Remove a user from team
 [**listTeamUsers**](TeamApi.md#listTeamUsers) | **GET** /teams/{team_id}/users | Fetch all users assigned to team
 [**listTeams**](TeamApi.md#listTeams) | **GET** /teams | Fetch all available teams
 [**permitTeamUser**](TeamApi.md#permitTeamUser) | **PUT** /teams/{team_id}/users | Update user perms for team
@@ -180,9 +180,9 @@ No authorization required
 [[Back to README]](../../README.md)
 
 
-## delteTeamFromUser
+## deleteTeamFromUser
 
-> \Umschlag\Model\GeneralError delteTeamFromUser($teamId, $teamUser)
+> \Umschlag\Model\GeneralError deleteTeamFromUser($teamId, $teamUser)
 
 Remove a user from team
 
@@ -202,10 +202,10 @@ $teamId = 'teamId_example'; // string | A team UUID or slug
 $teamUser = new \Umschlag\Model\TeamUserParams(); // \Umschlag\Model\TeamUserParams | The team user data to delete
 
 try {
-    $result = $apiInstance->delteTeamFromUser($teamId, $teamUser);
+    $result = $apiInstance->deleteTeamFromUser($teamId, $teamUser);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TeamApi->delteTeamFromUser: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TeamApi->deleteTeamFromUser: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

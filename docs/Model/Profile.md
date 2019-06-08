@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | [optional] 
 **slug** | **string** |  | [optional] 
 **username** | **string** |  | 
+**password** | **string** |  | [optional] 
 **email** | **string** |  | 
 **admin** | **bool** |  | [optional] 
 **active** | **bool** |  | [optional] 

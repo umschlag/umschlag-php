@@ -81,13 +81,6 @@ class TeamUserParamsTest extends TestCase
     }
 
     /**
-     * Test attribute "team"
-     */
-    public function testPropertyTeam()
-    {
-    }
-
-    /**
      * Test attribute "user"
      */
     public function testPropertyUser()

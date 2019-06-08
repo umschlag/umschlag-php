@@ -122,15 +122,15 @@ class AuthApi
      *
      * Authenticate an user by credentials
      *
-     * @param  \Umschlag\Model\AuthLogin $params The credentials to authenticate (required)
+     * @param  \Umschlag\Model\AuthLogin $authLogin The credentials to authenticate (required)
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Umschlag\Model\AuthToken|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError
      */
-    public function loginUser($params)
+    public function loginUser($authLogin)
     {
-        list($response) = $this->loginUserWithHttpInfo($params);
+        list($response) = $this->loginUserWithHttpInfo($authLogin);
         return $response;
     }
 
@@ -139,15 +139,15 @@ class AuthApi
      *
      * Authenticate an user by credentials
      *
-     * @param  \Umschlag\Model\AuthLogin $params The credentials to authenticate (required)
+     * @param  \Umschlag\Model\AuthLogin $authLogin The credentials to authenticate (required)
      *
      * @throws \Umschlag\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Umschlag\Model\AuthToken|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function loginUserWithHttpInfo($params)
+    public function loginUserWithHttpInfo($authLogin)
     {
-        $request = $this->loginUserRequest($params);
+        $request = $this->loginUserRequest($authLogin);
 
         try {
             $options = $this->createHttpClientOption();
@@ -267,14 +267,14 @@ class AuthApi
      *
      * Authenticate an user by credentials
      *
-     * @param  \Umschlag\Model\AuthLogin $params The credentials to authenticate (required)
+     * @param  \Umschlag\Model\AuthLogin $authLogin The credentials to authenticate (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function loginUserAsync($params)
+    public function loginUserAsync($authLogin)
     {
-        return $this->loginUserAsyncWithHttpInfo($params)
+        return $this->loginUserAsyncWithHttpInfo($authLogin)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -287,15 +287,15 @@ class AuthApi
      *
      * Authenticate an user by credentials
      *
-     * @param  \Umschlag\Model\AuthLogin $params The credentials to authenticate (required)
+     * @param  \Umschlag\Model\AuthLogin $authLogin The credentials to authenticate (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function loginUserAsyncWithHttpInfo($params)
+    public function loginUserAsyncWithHttpInfo($authLogin)
     {
         $returnType = '\Umschlag\Model\AuthToken';
-        $request = $this->loginUserRequest($params);
+        $request = $this->loginUserRequest($authLogin);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -334,17 +334,17 @@ class AuthApi
     /**
      * Create request for operation 'loginUser'
      *
-     * @param  \Umschlag\Model\AuthLogin $params The credentials to authenticate (required)
+     * @param  \Umschlag\Model\AuthLogin $authLogin The credentials to authenticate (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function loginUserRequest($params)
+    protected function loginUserRequest($authLogin)
     {
-        // verify the required parameter 'params' is set
-        if ($params === null || (is_array($params) && count($params) === 0)) {
+        // verify the required parameter 'authLogin' is set
+        if ($authLogin === null || (is_array($authLogin) && count($authLogin) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $params when calling loginUser'
+                'Missing the required parameter $authLogin when calling loginUser'
             );
         }
 
@@ -359,8 +359,8 @@ class AuthApi
 
         // body params
         $_tempBody = null;
-        if (isset($params)) {
-            $_tempBody = $params;
+        if (isset($authLogin)) {
+            $_tempBody = $authLogin;
         }
 
         if ($multipart) {

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## loginUser
 
-> \Umschlag\Model\AuthToken loginUser($params)
+> \Umschlag\Model\AuthToken loginUser($authLogin)
 
 Authenticate an user by credentials
 
@@ -28,10 +28,10 @@ $apiInstance = new Umschlag\Api\AuthApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$params = new \Umschlag\Model\AuthLogin(); // \Umschlag\Model\AuthLogin | The credentials to authenticate
+$authLogin = new \Umschlag\Model\AuthLogin(); // \Umschlag\Model\AuthLogin | The credentials to authenticate
 
 try {
-    $result = $apiInstance->loginUser($params);
+    $result = $apiInstance->loginUser($authLogin);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthApi->loginUser: ', $e->getMessage(), PHP_EOL;
@@ -44,7 +44,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **params** | [**\Umschlag\Model\AuthLogin**](../Model/AuthLogin.md)| The credentials to authenticate |
+ **authLogin** | [**\Umschlag\Model\AuthLogin**](../Model/AuthLogin.md)| The credentials to authenticate |
 
 ### Return type
 

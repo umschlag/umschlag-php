@@ -62,6 +62,7 @@ class User implements ModelInterface, ArrayAccess
         'id' => 'string',
         'slug' => 'string',
         'username' => 'string',
+        'password' => 'string',
         'email' => 'string',
         'admin' => 'bool',
         'active' => 'bool',
@@ -78,6 +79,7 @@ class User implements ModelInterface, ArrayAccess
         'id' => 'uuid',
         'slug' => null,
         'username' => null,
+        'password' => 'password',
         'email' => null,
         'admin' => null,
         'active' => null,
@@ -115,6 +117,7 @@ class User implements ModelInterface, ArrayAccess
         'id' => 'id',
         'slug' => 'slug',
         'username' => 'username',
+        'password' => 'password',
         'email' => 'email',
         'admin' => 'admin',
         'active' => 'active',
@@ -131,6 +134,7 @@ class User implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'slug' => 'setSlug',
         'username' => 'setUsername',
+        'password' => 'setPassword',
         'email' => 'setEmail',
         'admin' => 'setAdmin',
         'active' => 'setActive',
@@ -147,6 +151,7 @@ class User implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'slug' => 'getSlug',
         'username' => 'getUsername',
+        'password' => 'getPassword',
         'email' => 'getEmail',
         'admin' => 'getAdmin',
         'active' => 'getActive',
@@ -217,6 +222,7 @@ class User implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['slug'] = isset($data['slug']) ? $data['slug'] : null;
         $this->container['username'] = isset($data['username']) ? $data['username'] : null;
+        $this->container['password'] = isset($data['password']) ? $data['password'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
         $this->container['admin'] = isset($data['admin']) ? $data['admin'] : null;
         $this->container['active'] = isset($data['active']) ? $data['active'] : null;
@@ -322,6 +328,30 @@ class User implements ModelInterface, ArrayAccess
     public function setUsername($username)
     {
         $this->container['username'] = $username;
+
+        return $this;
+    }
+
+    /**
+     * Gets password
+     *
+     * @return string|null
+     */
+    public function getPassword()
+    {
+        return $this->container['password'];
+    }
+
+    /**
+     * Sets password
+     *
+     * @param string|null $password password
+     *
+     * @return $this
+     */
+    public function setPassword($password)
+    {
+        $this->container['password'] = $password;
 
         return $this;
     }

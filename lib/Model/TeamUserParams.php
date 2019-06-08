@@ -59,7 +59,6 @@ class TeamUserParams implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'team' => 'string',
         'user' => 'string',
         'perm' => 'string'
     ];
@@ -70,7 +69,6 @@ class TeamUserParams implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'team' => null,
         'user' => null,
         'perm' => null
     ];
@@ -102,7 +100,6 @@ class TeamUserParams implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'team' => 'team',
         'user' => 'user',
         'perm' => 'perm'
     ];
@@ -113,7 +110,6 @@ class TeamUserParams implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'team' => 'setTeam',
         'user' => 'setUser',
         'perm' => 'setPerm'
     ];
@@ -124,7 +120,6 @@ class TeamUserParams implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'team' => 'getTeam',
         'user' => 'getUser',
         'perm' => 'getPerm'
     ];
@@ -170,8 +165,25 @@ class TeamUserParams implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const PERM_USER = 'user';
+    const PERM_ADMIN = 'admin';
+    const PERM_OWNER = 'owner';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPermAllowableValues()
+    {
+        return [
+            self::PERM_USER,
+            self::PERM_ADMIN,
+            self::PERM_OWNER,
+        ];
+    }
     
 
     /**
@@ -189,7 +201,6 @@ class TeamUserParams implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['team'] = isset($data['team']) ? $data['team'] : null;
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
         $this->container['perm'] = isset($data['perm']) ? $data['perm'] : null;
     }
@@ -203,15 +214,20 @@ class TeamUserParams implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['team'] === null) {
-            $invalidProperties[] = "'team' can't be null";
-        }
         if ($this->container['user'] === null) {
             $invalidProperties[] = "'user' can't be null";
         }
         if ($this->container['perm'] === null) {
             $invalidProperties[] = "'perm' can't be null";
         }
+        $allowedValues = $this->getPermAllowableValues();
+        if (!is_null($this->container['perm']) && !in_array($this->container['perm'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'perm', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -226,30 +242,6 @@ class TeamUserParams implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets team
-     *
-     * @return string
-     */
-    public function getTeam()
-    {
-        return $this->container['team'];
-    }
-
-    /**
-     * Sets team
-     *
-     * @param string $team team
-     *
-     * @return $this
-     */
-    public function setTeam($team)
-    {
-        $this->container['team'] = $team;
-
-        return $this;
-    }
 
     /**
      * Gets user
@@ -294,6 +286,15 @@ class TeamUserParams implements ModelInterface, ArrayAccess
      */
     public function setPerm($perm)
     {
+        $allowedValues = $this->getPermAllowableValues();
+        if (!in_array($perm, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'perm', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['perm'] = $perm;
 
         return $this;

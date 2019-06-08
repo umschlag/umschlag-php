@@ -70,10 +70,10 @@ $api = new Umschlag\Api\AuthApi(
     new GuzzleHttp\Client()
 );
 
-$params = new \Umschlag\Model\AuthLogin(); // \Umschlag\Model\AuthLogin | The credentials to authenticate
+$authLogin = new \Umschlag\Model\AuthLogin(); // \Umschlag\Model\AuthLogin | The credentials to authenticate
 
 try {
-    $result = $api->loginUser($params);
+    $result = $api->loginUser($authLogin);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthApi->loginUser: ', $e->getMessage(), PHP_EOL;
@@ -96,7 +96,7 @@ Class | Method | HTTP request | Description
 *TeamApi* | [**appendTeamToUser**](docs/Api/TeamApi.md#appendteamtouser) | **POST** /teams/{team_id}/users | Assign a user to team
 *TeamApi* | [**createTeam**](docs/Api/TeamApi.md#createteam) | **POST** /teams | Create a new team
 *TeamApi* | [**deleteTeam**](docs/Api/TeamApi.md#deleteteam) | **DELETE** /teams/{team_id} | Delete a specific team
-*TeamApi* | [**delteTeamFromUser**](docs/Api/TeamApi.md#delteteamfromuser) | **DELETE** /teams/{team_id}/users | Remove a user from team
+*TeamApi* | [**deleteTeamFromUser**](docs/Api/TeamApi.md#deleteteamfromuser) | **DELETE** /teams/{team_id}/users | Remove a user from team
 *TeamApi* | [**listTeamUsers**](docs/Api/TeamApi.md#listteamusers) | **GET** /teams/{team_id}/users | Fetch all users assigned to team
 *TeamApi* | [**listTeams**](docs/Api/TeamApi.md#listteams) | **GET** /teams | Fetch all available teams
 *TeamApi* | [**permitTeamUser**](docs/Api/TeamApi.md#permitteamuser) | **PUT** /teams/{team_id}/users | Update user perms for team

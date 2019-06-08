@@ -170,8 +170,25 @@ class TeamUser implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const PERM_USER = 'user';
+    const PERM_ADMIN = 'admin';
+    const PERM_OWNER = 'owner';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPermAllowableValues()
+    {
+        return [
+            self::PERM_USER,
+            self::PERM_ADMIN,
+            self::PERM_OWNER,
+        ];
+    }
     
 
     /**
@@ -212,6 +229,14 @@ class TeamUser implements ModelInterface, ArrayAccess
         if ($this->container['perm'] === null) {
             $invalidProperties[] = "'perm' can't be null";
         }
+        $allowedValues = $this->getPermAllowableValues();
+        if (!is_null($this->container['perm']) && !in_array($this->container['perm'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'perm', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -294,6 +319,15 @@ class TeamUser implements ModelInterface, ArrayAccess
      */
     public function setPerm($perm)
     {
+        $allowedValues = $this->getPermAllowableValues();
+        if (!in_array($perm, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'perm', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['perm'] = $perm;
 
         return $this;

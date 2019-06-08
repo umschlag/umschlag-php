@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | **string** |  | 
 **team** | **string** |  | 
 **perm** | **string** |  | 
 

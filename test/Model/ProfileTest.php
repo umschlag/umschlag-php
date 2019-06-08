@@ -102,6 +102,13 @@ class ProfileTest extends TestCase
     }
 
     /**
+     * Test attribute "password"
+     */
+    public function testPropertyPassword()
+    {
+    }
+
+    /**
      * Test attribute "email"
      */
     public function testPropertyEmail()

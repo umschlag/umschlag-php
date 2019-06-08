@@ -1163,7 +1163,7 @@ class TeamApi
     }
 
     /**
-     * Operation delteTeamFromUser
+     * Operation deleteTeamFromUser
      *
      * Remove a user from team
      *
@@ -1174,14 +1174,14 @@ class TeamApi
      * @throws \InvalidArgumentException
      * @return \Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError
      */
-    public function delteTeamFromUser($teamId, $teamUser)
+    public function deleteTeamFromUser($teamId, $teamUser)
     {
-        list($response) = $this->delteTeamFromUserWithHttpInfo($teamId, $teamUser);
+        list($response) = $this->deleteTeamFromUserWithHttpInfo($teamId, $teamUser);
         return $response;
     }
 
     /**
-     * Operation delteTeamFromUserWithHttpInfo
+     * Operation deleteTeamFromUserWithHttpInfo
      *
      * Remove a user from team
      *
@@ -1192,9 +1192,9 @@ class TeamApi
      * @throws \InvalidArgumentException
      * @return array of \Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError|\Umschlag\Model\GeneralError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function delteTeamFromUserWithHttpInfo($teamId, $teamUser)
+    public function deleteTeamFromUserWithHttpInfo($teamId, $teamUser)
     {
-        $request = $this->delteTeamFromUserRequest($teamId, $teamUser);
+        $request = $this->deleteTeamFromUserRequest($teamId, $teamUser);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1350,7 +1350,7 @@ class TeamApi
     }
 
     /**
-     * Operation delteTeamFromUserAsync
+     * Operation deleteTeamFromUserAsync
      *
      * Remove a user from team
      *
@@ -1360,9 +1360,9 @@ class TeamApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function delteTeamFromUserAsync($teamId, $teamUser)
+    public function deleteTeamFromUserAsync($teamId, $teamUser)
     {
-        return $this->delteTeamFromUserAsyncWithHttpInfo($teamId, $teamUser)
+        return $this->deleteTeamFromUserAsyncWithHttpInfo($teamId, $teamUser)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1371,7 +1371,7 @@ class TeamApi
     }
 
     /**
-     * Operation delteTeamFromUserAsyncWithHttpInfo
+     * Operation deleteTeamFromUserAsyncWithHttpInfo
      *
      * Remove a user from team
      *
@@ -1381,10 +1381,10 @@ class TeamApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function delteTeamFromUserAsyncWithHttpInfo($teamId, $teamUser)
+    public function deleteTeamFromUserAsyncWithHttpInfo($teamId, $teamUser)
     {
         $returnType = '\Umschlag\Model\GeneralError';
-        $request = $this->delteTeamFromUserRequest($teamId, $teamUser);
+        $request = $this->deleteTeamFromUserRequest($teamId, $teamUser);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1421,7 +1421,7 @@ class TeamApi
     }
 
     /**
-     * Create request for operation 'delteTeamFromUser'
+     * Create request for operation 'deleteTeamFromUser'
      *
      * @param  string $teamId A team UUID or slug (required)
      * @param  \Umschlag\Model\TeamUserParams $teamUser The team user data to delete (required)
@@ -1429,18 +1429,18 @@ class TeamApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function delteTeamFromUserRequest($teamId, $teamUser)
+    protected function deleteTeamFromUserRequest($teamId, $teamUser)
     {
         // verify the required parameter 'teamId' is set
         if ($teamId === null || (is_array($teamId) && count($teamId) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $teamId when calling delteTeamFromUser'
+                'Missing the required parameter $teamId when calling deleteTeamFromUser'
             );
         }
         // verify the required parameter 'teamUser' is set
         if ($teamUser === null || (is_array($teamUser) && count($teamUser) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $teamUser when calling delteTeamFromUser'
+                'Missing the required parameter $teamUser when calling deleteTeamFromUser'
             );
         }
 

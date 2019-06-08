@@ -105,12 +105,12 @@ class TeamApiTest extends TestCase
     }
 
     /**
-     * Test case for delteTeamFromUser
+     * Test case for deleteTeamFromUser
      *
      * Remove a user from team.
      *
      */
-    public function testDelteTeamFromUser()
+    public function testDeleteTeamFromUser()
     {
     }
 
